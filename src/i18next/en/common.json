@@ -1,0 +1,102 @@
+{
+  "hello": "hello",
+  "choose_image": "Choose Image",
+  "choose_language": "Choose Language",
+  "helmet": {
+    "default": "Vietnam Railway Corporation - VNR",
+    "home_pages": "Home Pages - VNR",
+    "login_pages": "Login Pages - VNR",
+    "register_pages": "Register Pages - VNR",
+    "administration_pages": "Admin Pages - VNR",
+    "user_pages": "User Pages - VNR",
+    "not_found_pages": "Not found Pages - VNR",
+    "unit_pages": "Unit Pages - VNR",
+    "setting_pages": "Settings - VNR",
+    "company_pages": "Companies - VNR",
+    "attributes": "Attributes - VNR"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "unit": "Unit",
+    "company": "Company",
+    "setting": "Setting",
+    "user": "User"
+  },
+  "dialog": {
+    "title": "Confirm",
+    "content": "Are you sure delete it?",
+    "close": "Close",
+    "argee": "Argee",
+    "change_form": "Data is changing. Are you sure close dialog?",
+    "full_screen": "Full screen",
+    "custom_screen": "Default screen",
+    "update_data": "Upgrade data",
+    "create_data": "Create data",
+    "title_forgot": "Forgot password",
+    "content_forgot": "Please login https://mail.google.com get password"
+  },
+  "button": {
+    "clear": "Clear",
+    "search": "Search",
+    "filter": "Filter list",
+    "create": "Create",
+    "update": "Update",
+    "close": "Close",
+    "forgot": "Password retrieval"
+  },
+  "placeholder": {
+    "search": "Search..."
+  },
+  "pagination": {
+    "label": "Rows per page:",
+    "selected": "count select"
+  },
+  "select": {
+    "all": "All",
+    "placeholder": "Select..."
+  },
+  "profile": {
+    "title": "My Information"
+  },
+  "components": {
+    "units": "Units",
+    "settings": "Settings",
+    "company": "Companies",
+    "attributes": "Attributes"
+  },
+  "accordion": {
+    "title_table": "Table"
+  },
+  "field": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "newPassword": "New password",
+    "oldPassword": "Old password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "userName": "Username",
+    "phoneNumber": "Phone number",
+    "address": "Address",
+    "code": "Code",
+    "name": "Name",
+    "fax": "Fax",
+    "key": "Key",
+    "value": "Value",
+    "createdDate": "Create date",
+    "license": "License",
+    "mobile": "Mobile",
+    "slogan": "Slogan",
+    "pathLogo": "Logo"
+  },
+  "validator": {
+    "required": "is required",
+    "min_8": "min 8 character",
+    "max_255": "max 255 character",
+    "match_password": "Password must match",
+    "email": {
+      "format": "incorrect email format"
+    },
+    "phone": "not valid"
+  }
+}

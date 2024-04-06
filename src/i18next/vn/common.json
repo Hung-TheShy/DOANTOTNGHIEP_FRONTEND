@@ -1,0 +1,102 @@
+{
+  "hello": "Xin chào",
+  "choose_image": "Chọn ảnh",
+  "choose_language": "Chọn ngôn ngữ",
+  "helmet": {
+    "default": "Tổng Công Ty Đường Sắt Việt Nam - VNR",
+    "home_pages": "Trang chủ - VNR",
+    "login_pages": "Đăng nhập - VNR",
+    "register_pages": "Đăng ký - VNR",
+    "administration_pages": "Quản trị hệ thống - VNR",
+    "user_pages": "Quản lý nhân viên - VNR",
+    "not_found_pages": "404 - VNR",
+    "unit_pages": "Quản lý đơn vị - VNR",
+    "setting_pages": "Quản lý cấu hình - VNR",
+    "company_pages": "Quản lý đơn vị sở hữu website - VNR",
+    "attributes": "Quản lý thuộc tính - VNR"
+  },
+  "nav": {
+    "dashboard": "Trang chủ",
+    "unit": "Đơn vị",
+    "company": "Đơn vị sở hữu website",
+    "setting": "Cấu hình",
+    "user": "Tài khoản"
+  },
+  "dialog": {
+    "title": "Xác nhận",
+    "content": "Bạn chắc rằng muốn xóa dữ liệu này?",
+    "close": "Đóng lại",
+    "argee": "Đồng ý",
+    "change_form": "Dữ liệu đang được thay đổi. Bạn chắc rằng muốn đóng?",
+    "full_screen": "Phóng to",
+    "custom_screen": "Thu nhỏ",
+    "update_data": "Cập nhật dữ liệu",
+    "create_data": "Tạo mới dữ liệu",
+    "title_forgot": "Quên mật khẩu",
+    "content_forgot": "Vui lòng vào https://mail.google.com để lấy mật khẩu"
+  },
+  "button": {
+    "clear": "Làm mới",
+    "search": "Tìm kiếm",
+    "filter": "Bộ lọc",
+    "create": "Tạo mới",
+    "update": "Cập nhật",
+    "close": "Đóng lại",
+    "forgot": "Lấy lại mật khẩu"
+  },
+  "placeholder": {
+    "search": "Tìm kiếm..."
+  },
+  "pagination": {
+    "label": "Số dòng trên 1 trang:",
+    "selected": "Số lượng được chọn"
+  },
+  "select": {
+    "all": "Tất cả",
+    "placeholder": "Chọn..."
+  },
+  "profile": {
+    "title": "Thông tin cá nhân"
+  },
+  "components": {
+    "units": "Đơn vị",
+    "settings": "Cấu hình",
+    "company": "Đơn vị sở hữu website",
+    "attributes": "Thuộc tính"
+  },
+  "accordion": {
+    "title_table": "Bảng dữ liệu"
+  },
+  "field": {
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "newPassword": "Mật khẩu mới",
+    "oldPassword": "Mật khẩu cũ",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "userName": "Tên đăng nhập",
+    "phoneNumber": "Số điện thoại",
+    "address": "Địa chỉ",
+    "code": "Mã",
+    "name": "Tên",
+    "fax": "Fax",
+    "key": "Từ khóa",
+    "value": "Giá trị",
+    "createdDate": "Ngày tạo",
+    "license": "Giấy phép",
+    "mobile": "Di động",
+    "slogan": "Khẩu hiệu",
+    "pathLogo": "Ảnh"
+  },
+  "validator": {
+    "required": "không được bỏ trống",
+    "min_8": "ít nhất 8 kí tự",
+    "max_255": "tối đa 255 kí tự",
+    "match_password": "không trùng với mật khẩu",
+    "email": {
+      "format": "không đúng định dạng email"
+    },
+    "phone": "không đúng định dạng"
+  }
+}
