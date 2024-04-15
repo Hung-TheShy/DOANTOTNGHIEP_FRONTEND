@@ -93,6 +93,7 @@ export default function TableLayoutAdmin({
                   placeholder={t('placeholder.search')}
                   sx={{ marginRight: 2 }}
                   size="small"
+                  color="success"
                   startAdornment={
                     <InputAdornment position="start">
                       <Iconify
@@ -106,7 +107,7 @@ export default function TableLayoutAdmin({
                   //   fullWidth
                   size="small"
                   variant="text"
-                  color="inherit"
+                  color="success"
                   onClick={handleClear}
                   sx={{ marginRight: 1 }}
                 >
@@ -117,7 +118,7 @@ export default function TableLayoutAdmin({
                   size="small"
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  color="success"
                   onClick={handleSearch}
                   disabled={valueSearch === ''}
                 >
@@ -131,6 +132,7 @@ export default function TableLayoutAdmin({
               expandIcon={<ArrowDropDownIcon />}
               aria-controls="panel-table"
               id="panel-table"
+              style={{backgroundColor: "#058c42"}}
             >
               <Typography variant="subtitle2">
                 {accordionTitle || t('accordion.title_table')}

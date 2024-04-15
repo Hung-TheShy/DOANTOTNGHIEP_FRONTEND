@@ -41,7 +41,7 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
       }}
       {...other}
     >
-      <img src="https://vr.com.vn/images/logo.png" alt="" />
+      <img src="/assets/images/logoby.png" alt="" width="200px" height="100px" />
       {/* <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
         <defs>
           <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">

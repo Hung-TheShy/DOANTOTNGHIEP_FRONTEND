@@ -39,8 +39,8 @@ export default function HeaderDefault({ onOpenNav }) {
 
       <Stack direction="row" alignItems="center" spacing={4}>
         <Button
-          size="small"
-          color="primary"
+          size="medium"
+          color="success"
           variant="contained"
           sx={{
             minWidth: 32,
@@ -94,13 +94,13 @@ export default function HeaderDefault({ onOpenNav }) {
           {renderContent}
 
           <Button
-            size="large"
-            color="primary"
+            size="medium"
+            color="success"
             variant="contained"
             sx={{
-              minWidth: 48,
-              width: 48,
-              height: 48,
+              minWidth:32,
+              width: 32,
+              height: 32,
               borderRadius: '50%',
               marginLeft: 4
             }}

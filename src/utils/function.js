@@ -56,7 +56,7 @@ export function buildQueryString(object) {
   }
 }
 
-export function sortTableData(sorting, setConditions) {
+export function sortTableData(sorting) {
   let sortKey = ORDER_BY;
   let currentKey = ORDER_BY_DESC;
   if (sorting.length > 0) {
@@ -68,9 +68,9 @@ export function sortTableData(sorting, setConditions) {
       currentKey = ORDER_BY_DESC;
     }
   }
-  setConditions((oldState) => ({
-    ...oldState,
-    [sortKey]: sorting.length && sorting[0].id ? sorting[0].id : undefined,
-    [currentKey]: undefined,
-  }));
+  const obj = {
+    sortKey,
+    currentKey
+  }
+  return obj
 }

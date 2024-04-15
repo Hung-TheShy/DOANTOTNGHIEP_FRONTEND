@@ -72,7 +72,7 @@ export default function FormComponent(props) {
             size="small"
             type="submit"
             variant="contained"
-            color="primary"
+            color="success"
             onClick={handleSubmitForm}
             // eslint-disable-next-line no-unneeded-ternary
             disabled={formik.errors && Object.keys(formik.errors).length ? true : false}

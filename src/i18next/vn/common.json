@@ -3,24 +3,26 @@
   "choose_image": "Chọn ảnh",
   "choose_language": "Chọn ngôn ngữ",
   "helmet": {
-    "default": "Tổng Công Ty Đường Sắt Việt Nam - VNR",
-    "home_pages": "Trang chủ - VNR",
-    "login_pages": "Đăng nhập - VNR",
-    "register_pages": "Đăng ký - VNR",
-    "administration_pages": "Quản trị hệ thống - VNR",
-    "user_pages": "Quản lý nhân viên - VNR",
-    "not_found_pages": "404 - VNR",
-    "unit_pages": "Quản lý đơn vị - VNR",
-    "setting_pages": "Quản lý cấu hình - VNR",
-    "company_pages": "Quản lý đơn vị sở hữu website - VNR",
-    "attributes": "Quản lý thuộc tính - VNR"
+    "default": "HUEBIKE Đạp xe tới chớt - 3HN",
+    "home_pages": "Trang chủ - 3HN",
+    "login_pages": "Đăng nhập - 3HN",
+    "register_pages": "Đăng ký - 3HN",
+    "administration_pages": "Quản trị hệ thống - 3HN",
+    "user_pages": "Quản lý người dùng - 3HN",
+    "bicycle_pages": "Quản lý xe đạp - 3HN",
+    "not_found_pages": "404 - 3HN",
+    "unit_pages": "Quản lý đơn vị - 3HN",
+    "setting_pages": "Quản lý cấu hình - 3HN",
+    "company_pages": "Quản lý đơn vị sở hữu website - 3HN",
+    "attributes": "Quản lý thuộc tính - 3HN"
   },
   "nav": {
     "dashboard": "Trang chủ",
     "unit": "Đơn vị",
     "company": "Đơn vị sở hữu website",
     "setting": "Cấu hình",
-    "user": "Tài khoản"
+    "user": "Người dùng",
+    "bicycle": "Xe đạp"
   },
   "dialog": {
     "title": "Xác nhận",
@@ -68,6 +70,10 @@
     "title_table": "Bảng dữ liệu"
   },
   "field": {
+    "stt": "Số thứ tự",
+    "namebicycle": "Tên xe",
+    "catebicycle": "Loại xe",
+    "codelock": "Mã khóa xe",
     "email": "Email",
     "password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu",
@@ -87,7 +93,8 @@
     "license": "Giấy phép",
     "mobile": "Di động",
     "slogan": "Khẩu hiệu",
-    "pathLogo": "Ảnh"
+    "pathLogo": "Ảnh",
+    "status": "Trạng thái"
   },
   "validator": {
     "required": "không được bỏ trống",

@@ -24,6 +24,7 @@ export default function AlertDialog() {
   const handleClose = () =>
     dispatch(
       setConfirmDialog({
+        open: true,
         show: false,
         url: null,
         title: null,
@@ -72,7 +73,7 @@ export default function AlertDialog() {
   };
   return (
     <Dialog
-      open={showDialog.show}
+      open={showDialog?.show}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
@@ -83,11 +84,11 @@ export default function AlertDialog() {
           icon="eva:alert-circle-outline"
           sx={{ mr: 1, height: 24, width: 24, color: theme.palette.warning.main }}
         />
-        {showDialog.title ? showDialog.title : t('dialog.title')}
+        {showDialog?.title ? showDialog?.title : t('dialog.title')}
       </DialogTitle>
       <DialogContent dividers>
         <DialogContentText id="alert-dialog-description">
-          {showDialog.content ? showDialog.content : t('dialog.content')}
+          {showDialog?.content ? showDialog?.content : t('dialog.content')}
         </DialogContentText>
       </DialogContent>
       <DialogActions>

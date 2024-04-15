@@ -14,7 +14,7 @@ import { setAuth } from 'src/redux/auth';
 import LoginTemplates from 'src/template/login';
 import { setNotification } from 'src/redux/common';
 import ForgotTemplates from 'src/template/login/forgot';
-import { SIGN_IN, FORGOT_PASSWORD } from 'src/api/authen';
+import {  SIGN_IN, FORGOT_PASSWORD } from 'src/api/authen';
 
 import DialogComponent from 'src/components/modal';
 

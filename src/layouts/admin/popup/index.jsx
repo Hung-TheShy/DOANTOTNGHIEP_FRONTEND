@@ -46,7 +46,7 @@ export default function LayoutPopup(props) {
           justifyContent="space-between"
           sx={{
             padding: 1,
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.success.main,
             color: theme.palette.grey[0],
           }}
         >
@@ -86,7 +86,7 @@ export default function LayoutPopup(props) {
         </Box>
       </Box>
     ),
-    [children, handleClose, open, t, theme.palette.grey, theme.palette.primary.main, title]
+    [children, handleClose, open, t, theme.palette.grey, theme.palette.success.main, title]
   );
   return (
     <>

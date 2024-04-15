@@ -24,7 +24,7 @@ export default function FilterDataTable(props) {
           style={{ backgroundColor: 'inherit' }}
           expandIcon={
             <Tooltip title={t('button.filter')}>
-              <IconButton color="primary">
+              <IconButton color="success">
                 <Iconify icon="ic:round-filter-list" />
               </IconButton>
             </Tooltip>

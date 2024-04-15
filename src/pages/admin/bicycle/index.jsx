@@ -9,19 +9,19 @@ import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import { Box } from '@mui/material';
 
 import { authGetData, authPostPutData } from 'src/utils/request';
-import { parseParams, sortTableData, removeUndefinedAttribute } from 'src/utils/function';
+import { parseParams, sortTableData, buildQueryString, removeUndefinedAttribute } from 'src/utils/function';
 import {
   PAGE_SIZE,
   PAGE_INDEX,
   STATUS_200,
   METHOD_PUT,
   METHOD_POST,
-  VITE_REACT_APP_API_MASTERDATA,
+  VITE_REACT_APP_API_AUTHEN,
 } from 'src/utils/constant';
 
-import { USERALL } from 'src/api/master-data';
-import Templates from 'src/template/admin/users';
-import FormCreateUpdate from 'src/template/admin/users/form';
+import { BICYCLE } from 'src/api/master-data';
+import Templates from 'src/template/admin/bicycle';
+import FormCreateUpdate from 'src/template/admin/bicycle/form';
 import { setPopup, setFetchData, setEqualForm, setNotification, setConfirmDialog } from 'src/redux/common';
 
 import Iconify from 'src/components/iconify';
@@ -30,7 +30,7 @@ const initValues = {
   key: '',
   value: '',
 };
-export default function UserPages() {
+export default function BicyclePages() {
   const theme = useTheme();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -69,35 +69,30 @@ export default function UserPages() {
    // columns
   const columns = [
     {
-      accessorKey: 'fullName',
-      header: t('field.name'),
+      accessorKey: 'stt',
+      header: t('field.stt'),
       size: 400,
       enableSorting: false,
     },
     {
-      accessorKey: 'address',
-      header: t('field.address'),
+      accessorKey: 'namebicycle',
+      header: t('field.namebicycle'),
       size: 200,
       enableSorting: false,
     },
     {
-      accessorKey: 'phoneNumber',
-      header: t('field.phoneNumber'),
+      accessorKey: 'catebicycle',
+      header: t('field.catebicycle'),
       size: 150,
       enableSorting: false,
     },
     {
-      accessorKey: 'email',
-      header: t('field.email'),
+      accessorKey: 'status',
+      header: t('field.status'),
       size: 300,
       enableSorting: false,
     },
-    {
-      accessorKey: 'isActive',
-      header: t('field.status'),
-      size: 150,
-      enableSorting: false,
-    },
+   
 
     // {
     //   field: 'createdDate',
@@ -187,7 +182,7 @@ export default function UserPages() {
     dispatch(
       setConfirmDialog({
         show: true,
-        url: VITE_REACT_APP_API_MASTERDATA + USERALL,
+        url: VITE_REACT_APP_API_AUTHEN + BICYCLE,
         data: id,
       })
     );
@@ -200,7 +195,7 @@ export default function UserPages() {
   // fetch data api
   const fetchData = useCallback((conditions) => {
     authGetData({
-      url: "https://aae8-117-2-168-33.ngrok-free.app/master-data/api/user/all",
+      url: `${VITE_REACT_APP_API_AUTHEN + BICYCLE}/list?${buildQueryString(parseParams(conditions))}`,
       onSuccess: (res) => {
         if (res && res.statusCode === STATUS_200) {
           setRows(res.data);
@@ -241,7 +236,7 @@ export default function UserPages() {
     if (isCreate) method = METHOD_POST;
     else method = METHOD_PUT;
     authPostPutData({
-      url: VITE_REACT_APP_API_MASTERDATA + USERALL,
+      url: VITE_REACT_APP_API_AUTHEN + BICYCLE,
       method,
       payload: {
         ...formik.values,
@@ -282,7 +277,7 @@ export default function UserPages() {
     <Templates
       rows={rows}
       columns={columns}
-      title={t('nav.user')}
+      title={t('components.settings')}
       titleModal={isCreate ? t('dialog.create_data') : t('dialog.update_data')}
       checkboxSelection={false}
       // setRowSelectionModel={setRowSelectionModel}

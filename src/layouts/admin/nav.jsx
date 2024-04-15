@@ -54,7 +54,7 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box
         sx={{
           borderBottom: '1px solid',
-          borderColor: 'primary.main',
+          borderColor: 'success.main',
         }}
       >
         <Logo sx={{ mt: 1, mb: 1, width: '100%' }} />
@@ -130,11 +130,11 @@ function NavItem({ item }) {
           marginTop: 1,
         },
         ...(active && {
-          color: 'primary.main',
+          color: 'success.main',
           fontWeight: 'fontWeightSemiBold',
-          bgcolor: (theme) => alpha(theme.palette.primary.main, 0.08),
+          bgcolor: (theme) => alpha(theme.palette.success.main, 0.08),
           '&:hover': {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, 0.16),
+            bgcolor: (theme) => alpha(theme.palette.success.main, 0.16),
           },
         }),
       }}

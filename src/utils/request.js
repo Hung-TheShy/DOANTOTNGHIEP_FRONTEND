@@ -95,7 +95,7 @@ export async function authGet(endpoint) {
   return data;
 }
 
-export async function authGetData({ url, onSuccess }) {
+export async function authGetData({ url, onSuccess, onFailure }) {
   store.dispatch(setLoading(true));
   try {
     const res = await authGet(url);
@@ -103,7 +103,12 @@ export async function authGetData({ url, onSuccess }) {
       onSuccess(res.data);
     }
   } catch (err) {
-    /* empty */
+    if (onFailure) {
+      onFailure(err);
+    } else {
+      // Xử lý lỗi mặc định nếu không có onFailure được cung cấp
+      console.error("Đã xảy ra lỗi:", err);
+    }
   } finally {
     store.dispatch(setLoading(false));
   }
@@ -120,7 +125,9 @@ async function defaultPost(endpoint, method, payload) {
     return null;
   });
   return Axios({
-    headers: {},
+    headers: {
+      "Content-Type": "application/json-patch+json"
+    },
     method,
     url: endpoint,
     data: body,

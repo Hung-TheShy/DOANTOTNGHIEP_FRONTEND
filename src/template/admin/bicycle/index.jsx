@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import TableLayoutAdmin from 'src/layouts/admin/table';
 
-export default function UserTemplates(props) {
+export default function BicycleTemplates(props) {
   const {
     rows,
     total,
@@ -53,7 +53,7 @@ export default function UserTemplates(props) {
   );
 }
 
-UserTemplates.propTypes = {
+BicycleTemplates.propTypes = {
   rows: PropTypes.array,
   columns: PropTypes.array,
   title: PropTypes.string,

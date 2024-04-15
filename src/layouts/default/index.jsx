@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import NorthIcon from '@mui/icons-material/North'; // import { Box } from '@mui/material';
-import { Box, Fab, Fade, Toolbar, Container, Typography, useScrollTrigger } from '@mui/material';
+import { Box, Fab, Fade, Toolbar, useScrollTrigger,} from '@mui/material';
 
 import MainDefault from './main';
 import HeaderDefault from './header';
@@ -41,7 +41,6 @@ export default function LayoutDefault({ children }) {
               marginTop: '-60px',
             }}
           >
-            
             <Box
               className="banner-item"
               style={{
@@ -56,6 +55,24 @@ export default function LayoutDefault({ children }) {
                 width: '100%',
               }}
             />
+            {/* <Box 
+              className="slider-banner"
+              style={{
+                position: 'relative',
+                left: 500,
+                width: 300,
+              }}
+            >
+            <Slider
+              aria-label="Temperature"
+              defaultValue={30}
+              valueLabelDisplay="auto"
+              step={1}
+              marks
+              min={1}
+              max={3}
+            />
+            </Box> */}
             <Box
               className="banner-title"
               sx={{
@@ -66,10 +83,10 @@ export default function LayoutDefault({ children }) {
                 top: '29.34673%',
               }}
             >
-              <Container>
+              {/* <Container>
 
               <Typography variant="h2" color="common.white" sx={{textTransform: "uppercase"}}>Vietnam Railways</Typography>
-              </Container>
+              </Container> */}
             </Box>
           </Box>
           {children}

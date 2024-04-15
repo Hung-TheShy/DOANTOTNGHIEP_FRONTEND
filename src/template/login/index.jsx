@@ -76,7 +76,7 @@ export default function LoginTemplates({ formik, onSubmitForm, handForgotPass })
               </ErrorTextComponent>
       </Stack>
       <Typography variant="body2" sx={{ mt: 1, mb: 2 }} >
-        <Link variant="subtitle2" sx={{ ml: 0.5 }} color="primary.main" onClick={handForgotPass}>
+        <Link variant="subtitle2" sx={{ ml: 0.5 }} color="success.main" onClick={handForgotPass}>
           {t('login.forgot')}
         </Link>
       </Typography>
@@ -92,7 +92,7 @@ export default function LoginTemplates({ formik, onSubmitForm, handForgotPass })
         // size="large"
         type="submit"
         variant="contained"
-        color="primary"
+        color="success"
         onClick={onSubmitForm}
       >
         {t('login.text')}

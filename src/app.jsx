@@ -75,6 +75,7 @@ export default function App() {
 
     if(previousLink) {
       navigate(previousLink)
+      localStorage.setItem("previousAccessLink", "")
     }
   }, [navigate])
 

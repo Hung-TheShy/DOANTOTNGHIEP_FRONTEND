@@ -1,5 +1,6 @@
+
 // ----------------------------------------------------------------------
-export const { VITE_REACT_APP_API_MASTER_DATA, VITE_REACT_APP_API_AUTHEN } = import.meta.env
+export const { VITE_REACT_APP_API_MASTERDATA, VITE_REACT_APP_API_AUTHEN } = import.meta.env
 export const HEADER = {
   H_MOBILE: 64,
   H_DESKTOP: 80,

@@ -113,3 +113,5 @@ PrivateRoute.propTypes = {
   logout: PropTypes.bool,
   children: PropTypes.node,
 };
+
+// api user = list tất cả các user. set cái list = rows ni vào 1 cái props mô đó sẽ xuất hiện ra trên màn hình

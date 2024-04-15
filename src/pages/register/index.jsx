@@ -10,7 +10,7 @@ import { PATH } from 'src/routes/constant';
 import {  postPutData } from 'src/utils/request';
 import { STATUS_200, phoneRegExp, VITE_REACT_APP_API_AUTHEN } from 'src/utils/constant';
 
-import { SIGN_UP } from 'src/api/authen';
+import {  SIGN_UP } from 'src/api/authen';
 import { setNotification } from 'src/redux/common';
 // import { setLoading } from 'src/redux/common';
 import RegisterTemplates from 'src/template/register';
@@ -47,6 +47,7 @@ export default function RegisterPages() {
 
   // submit register form
   const onSubmit = () => {
+    console.log(formik);
     postPutData({
       url: VITE_REACT_APP_API_AUTHEN + SIGN_UP,
       payload: {
@@ -56,7 +57,6 @@ export default function RegisterPages() {
         phoneNumber: formik.values.phoneNumber,
         address: formik.values.address,
         password: formik.values.password,
-        
       },
       onSuccess: (res) => {
         if (res && res.statusCode === STATUS_200) {

@@ -3,24 +3,25 @@
   "choose_image": "Choose Image",
   "choose_language": "Choose Language",
   "helmet": {
-    "default": "Vietnam Railway Corporation - VNR",
-    "home_pages": "Home Pages - VNR",
-    "login_pages": "Login Pages - VNR",
-    "register_pages": "Register Pages - VNR",
-    "administration_pages": "Admin Pages - VNR",
-    "user_pages": "User Pages - VNR",
-    "not_found_pages": "Not found Pages - VNR",
-    "unit_pages": "Unit Pages - VNR",
-    "setting_pages": "Settings - VNR",
-    "company_pages": "Companies - VNR",
-    "attributes": "Attributes - VNR"
+    "default": "Vietnam Railway Corporation - 3HN",
+    "home_pages": "Home Pages - 3HN",
+    "login_pages": "Login Pages - 3HN",
+    "register_pages": "Register Pages - 3HN",
+    "administration_pages": "Admin Pages - 3HN",
+    "user_pages": "User Pages - 3HN",
+    "not_found_pages": "Not found Pages - 3HN",
+    "unit_pages": "Unit Pages - 3HN",
+    "setting_pages": "Settings - 3HN",
+    "company_pages": "Companies - 3HN",
+    "attributes": "Attributes - 3HN"
   },
   "nav": {
     "dashboard": "Dashboard",
     "unit": "Unit",
     "company": "Company",
     "setting": "Setting",
-    "user": "User"
+    "user": "User",
+    "bicycle": "Bicycle"
   },
   "dialog": {
     "title": "Confirm",
@@ -87,7 +88,8 @@
     "license": "License",
     "mobile": "Mobile",
     "slogan": "Slogan",
-    "pathLogo": "Logo"
+    "pathLogo": "Logo",
+    "status": "Status"
   },
   "validator": {
     "required": "is required",

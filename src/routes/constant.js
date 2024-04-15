@@ -10,7 +10,8 @@ export const PATH = {
   NOTFOUND: '/not-found',
   ALL: '*',
   ADMIN: '/admin',
-  DASHBOARD: "/"
+  DASHBOARD: "/",
+  BICYCLE: '/bicycle'
 };
 
 export const PAGELAYOUT = {

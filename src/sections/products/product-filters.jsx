@@ -16,7 +16,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
-import { ColorPicker } from 'src/components/color-utils';
+// import { ColorPicker } from 'src/components/color-utils';
 
 // ----------------------------------------------------------------------
 
@@ -72,14 +72,14 @@ export default function ProductFilters({ openFilter, onOpenFilter, onCloseFilter
 
   const renderColors = (
     <Stack spacing={1}>
-      <Typography variant="subtitle2">Colors</Typography>
+      {/* <Typography variant="subtitle2">Colors</Typography>
       <ColorPicker
         name="colors"
         selected={[]}
         colors={COLOR_OPTIONS}
         onSelectColor={(color) => [].includes(color)}
         sx={{ maxWidth: 38 * 4 }}
-      />
+      /> */}
     </Stack>
   );
 

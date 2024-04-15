@@ -1,5 +1,5 @@
 // import { Formik } from 'formik';
-import { useState } from 'react';
+  import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
@@ -184,7 +184,7 @@ export default function RegisterTemplates({ formik, onSubmitForm }) {
       <Typography variant="body2" sx={{ mt: 2, mb: 3, textAlign: 'right' }}>
         {t('register.have_account')}
         <Link variant="subtitle2" sx={{ ml: 0.5 }} onClick={() => router.push(PATH.LOGIN)}>
-          {t('register.login')}
+          {t('register.lo gin')}
         </Link>
       </Typography>
 
@@ -193,7 +193,7 @@ export default function RegisterTemplates({ formik, onSubmitForm }) {
         // size="large"
         type="submit"
         variant="contained"
-        color="primary"
+        color="success"
         onClick={onSubmitForm}
       >
         {t('register.text')}
@@ -203,41 +203,36 @@ export default function RegisterTemplates({ formik, onSubmitForm }) {
 
   return (
     <Box
-      sx={{
-        ...bgGradient({
-          color: alpha(theme.palette.background.default, 0.9),
-          imgUrl: '/assets/background/overlay_4.jpg',
-        }),
-        height: 1,
-      }}
-    >
-      <Logo
-        sx={{
-          position: 'fixed',
-          top: { xs: 16, md: 24 },
-          left: { xs: 16, md: 24 },
-        }}
-      />
-      <Stack alignItems="center" justifyContent="center" sx={{ height: 1 }}>
-        <Card
-          sx={{
-            p: 3,
-            pt: 1,
-            pb: 1,
-            width: 1,
-            maxWidth: 420,
-          }}
-        >
-          <Divider sx={{ my: 3 }}>
-            <Typography variant="h4">{t('register.title')}</Typography>
-          </Divider>
-          {renderForm}
-          <Box sx={{ textAlign: 'right', pt: 1 }}>
-            <LanguageComponent />
-          </Box>
-        </Card>
-      </Stack>
-    </Box>
+  sx={{
+    ...bgGradient({
+      color: alpha(theme.palette.background.default, 0.9),
+      imgUrl: '/assets/background/overlay_4.jpg',
+    }),
+    height: 1,
+  }}
+>
+  <Logo
+    sx={{
+      position: 'fixed',
+      top: { xs: 16, md: 24 },
+      left: { xs: 16, md: 24 },
+    }}
+  />
+  <Stack alignItems="center" justifyContent="center" sx={{ height: 1 }}> {/* Center the card horizontally */}
+    <Card sx={{ p: 3, width: 'fit-content', maxWidth: 480 }}> {/* Adjust padding and max-width */}
+      <Divider sx={{ my: 3 }}>
+        <Typography variant="h4">{t('register.title')}</Typography>
+      </Divider>
+      <Box sx={{ alignItems: 'center' }}> {/* Vertically center form content */}
+        {renderForm}
+      </Box>
+      <Box sx={{ textAlign: 'right', pt: 1 }}>
+        <LanguageComponent />
+      </Box>
+    </Card>
+  </Stack>
+</Box>
+
   );
 }
 
