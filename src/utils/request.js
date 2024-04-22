@@ -126,7 +126,8 @@ async function defaultPost(endpoint, method, payload) {
   });
   return Axios({
     headers: {
-      "Content-Type": "application/json-patch+json"
+      "Content-Type": "application/json-patch+json",
+      "ngrok-skip-browesr-warning": "true"  
     },
     method,
     url: endpoint,

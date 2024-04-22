@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
 import Stack from '@mui/material/Stack';
-import { TextField } from "@mui/material";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import { Box, TextField } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import Iconify from 'src/components/iconify';
@@ -12,88 +16,112 @@ import FormComponent from "src/components/form";
 import ErrorTextComponent from "src/components/error-text";
 
 export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}) {
+  const [selectedValue, setSelectedValue] = useState('');
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+
   return (
+    <Stack spacing={2} alignItems="left" justifyContent="left" marginLeft={10}>
     <FormComponent formik={formik} textBtn={textBtn} handleSubmitForm={onSubmitForm} initialValues={initialValues}>
-      <ErrorTextComponent
-        errors={formik.errors}
-        touched={formik.touched}
-        field="firstName"
-        
-      >
-        <TextField
-          name="firstName"
-          label={t('field.firstName')}
-          size="small"
-          // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.firstName ? true : false}
-          value={formik.values.firstName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-
-        <TextField
-          name="lastName"
-          label={t('field.lastName')}
-          size="small"
-          // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.lastName ? true : false}
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          sx={{ mt: 2 }}
-        />
-
-        <TextField
-          name="username"
-          label={t('field.userName')}
-          size="small"
-          // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.userName ? true : false}
-          value={formik.values.userName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          sx={{ mt: 2 }}
-        />
-
-        <TextField
-          name="phonenumber"
-          label={t('field.phoneNumber')}
-          size="small"
-          // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.phoneNumber ? true : false}
-          value={formik.values.userName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          sx={{ mt: 2 }}
-        />
-
-        <TextField
-          name="email"
-          label={t('field.email')}
-          size="small"
-          // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.email ? true : false} 
-          value={formik.values.userName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          sx={{ mt: 2 }}
-        />
-
-        <TextField
+      <Box mb={2}>
+       <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="fullName">
+              <TextField
+                name="fullName"
+                label={t('field.fullName')}
+                size="small"
+                sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+                // eslint-disable-next-line no-unneeded-ternary
+                error={formik.touched.fullName && formik.errors.fullName ? true : false}
+                value={formik.values.fullName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </ErrorTextComponent>
+            </Box>
+          <Box mb={2}>
+            <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="userName">
+          <TextField
+            name="userName"
+            label={t('field.userName')}
+            size="small"
+            sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+            // eslint-disable-next-line no-unneeded-ternary
+            error={formik.touched.userName && formik.errors.userName ? true : false}
+            value={formik.values.userName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </ErrorTextComponent>
+        </Box>
+      <Box mb={2}>
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="phoneNumber">
+          <TextField
+            name="phoneNumber"
+            label={t('field.phoneNumber')}
+            size="small"
+            sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+            // eslint-disable-next-line no-unneeded-ternary
+            error={formik.touched.phoneNumber && formik.errors.phoneNumber ? true : false}
+            value={formik.values.phoneNumber}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </ErrorTextComponent>
+      </Box>
+      <Box mb={2}>
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="email">
+          <TextField
+            name="email"
+            label={t('field.email')}
+            size="small"
+            sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+            // eslint-disable-next-line no-unneeded-ternary
+            error={formik.touched.email && formik.errors.email ? true : false}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </ErrorTextComponent>
+      </Box>
+      <Box mb={2}>
+      <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="address">
+          <TextField
             name="address"
             label={t('field.address')}
             size="small"
-            multiline
+            sx={{width: 700, maxWidth: 700, marginBottom: 10}}
             // eslint-disable-next-line no-unneeded-ternary
-            // error={touched.email && errors.email ? true : false}
+            error={formik.touched.address && formik.errors.address ? true : false}
             value={formik.values.address}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-
+        </ErrorTextComponent>
+        </Box>
+        <Box mb={2}>
+        <FormControl sx={{minWidth: 150 }} size="small">
+          <InputLabel>{t('field.isSupper')}</InputLabel>
+          <Select
+        name="isSupperAdmin"
+        value={selectedValue}
+        label={t('field.isSupper')}
+        onChange={handleChange}
+        onBlur={formik.handleBlur}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value="true"> Admin </MenuItem>
+        <MenuItem value="false"> User </MenuItem>
+      </Select>
+    </FormControl>
+    </Box>
         <Stack direction="row" spacing={2}>
           <Stack>
             <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="password">
@@ -107,7 +135,7 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                sx={{ mt: 2 }}
+                sx={{ width: 340 }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -138,7 +166,7 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
                 value={formik.values.confirmPassword}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                sx={{ mt: 2 }}
+                sx={{ width: 340 }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -155,8 +183,8 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
             </ErrorTextComponent>
           </Stack>
         </Stack>
-      </ErrorTextComponent>
     </FormComponent>
+    </Stack>
   )
 }
 

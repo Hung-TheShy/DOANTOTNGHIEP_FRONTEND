@@ -73,5 +73,5 @@ UserTemplates.propTypes = {
   total: PropTypes.number,
   conditions: PropTypes.object,
   setConditions: PropTypes.func,
-  table: PropTypes.object
+  table: PropTypes.object,
 };

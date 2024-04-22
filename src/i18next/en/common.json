@@ -74,6 +74,7 @@
     "confirmPassword": "Confirm password",
     "newPassword": "New password",
     "oldPassword": "Old password",
+    "fullName": "FullName",
     "firstName": "First name",
     "lastName": "Last name",
     "userName": "Username",

@@ -102,7 +102,18 @@ export default function RegisterTemplates({ formik, onSubmitForm }) {
             onBlur={formik.handleBlur}
           />
         </ErrorTextComponent>
-
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="address">
+          <TextField
+            name="address"
+            label={t('field.address')}
+            size="small"
+            // eslint-disable-next-line no-unneeded-ternary
+            error={formik.touched.address && formik.errors.address ? true : false}
+            value={formik.values.address}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </ErrorTextComponent>
         <Stack direction="row" spacing={2}>
           <Stack>
             <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="password">
@@ -162,21 +173,6 @@ export default function RegisterTemplates({ formik, onSubmitForm }) {
             </ErrorTextComponent>
           </Stack>
         </Stack>
-        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="address">
-          <TextField
-            name="address"
-            label={t('field.address')}
-            size="small"
-            rows={3}
-            multiline
-            // eslint-disable-next-line no-unneeded-ternary
-            // error={touched.email && errors.email ? true : false}
-            value={formik.values.address}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-        </ErrorTextComponent>
-
         {/* </>
           )}
         </Formik> */}

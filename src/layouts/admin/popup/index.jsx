@@ -39,12 +39,13 @@ export default function LayoutPopup(props) {
   // render content popup
   const renderPopup = useCallback(
     () => (
-      <Box>
+      <Box marginLeft={20} marginRight={20}>
         <Stack
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
           sx={{
+            borderRadius: 1,
             padding: 1,
             backgroundColor: theme.palette.success.main,
             color: theme.palette.grey[0],

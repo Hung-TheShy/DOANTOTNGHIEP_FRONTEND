@@ -49,7 +49,7 @@ export default function RegisterPages() {
   const onSubmit = () => {
     console.log(formik);
     postPutData({
-      url: VITE_REACT_APP_API_AUTHEN + SIGN_UP,
+      url:  VITE_REACT_APP_API_AUTHEN + SIGN_UP,
       payload: {
         fullName: formik.values.lastName ? `${formik.values.lastName  } ${  formik.values.firstName}` : formik.values.firstName,
         userName: formik.values.userName,

@@ -15,6 +15,7 @@ export default defineConfig({
         lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
       },
     }),
+    
   ],
   resolve: {
     alias: [
@@ -33,8 +34,14 @@ export default defineConfig({
   },
   server: {
     port: 3030,
+    // https: true,
+    // key: path.resolve(__dirname, 'server.key') ,
+    // cert: path.resolve(__dirname, 'server.crt')  ,
   },
   preview: {
     port: 3030,
+    // https: true,
+    // key: path.resolve(__dirname, 'server.key') ,
+    // cert: path.resolve(__dirname, 'server.crt')  ,
   },
 });

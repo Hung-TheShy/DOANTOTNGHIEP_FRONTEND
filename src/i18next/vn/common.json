@@ -79,6 +79,8 @@
     "confirmPassword": "Xác nhận mật khẩu",
     "newPassword": "Mật khẩu mới",
     "oldPassword": "Mật khẩu cũ",
+    "fullName": "Họ và Tên",
+    "isSupper": "Cấp quyền",
     "firstName": "Tên",
     "lastName": "Họ",
     "userName": "Tên đăng nhập",
