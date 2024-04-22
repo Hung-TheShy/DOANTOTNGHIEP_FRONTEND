@@ -7,23 +7,23 @@ import { useNavigate } from 'react-router-dom';
 
 import { PATH } from 'src/routes/constant';
 
-import { postPutData } from 'src/utils/request';
-import { METHOD_PUT, STATUS_200, TOKEN_NAME, VITE_REACT_APP_API_AUTHEN } from 'src/utils/constant';
+import { postPutData, authPostFileData } from 'src/utils/request';
+import { METHOD_PUT, STATUS_200, TOKEN_NAME, METHOD_POST, VITE_REACT_APP_API_AUTHEN } from 'src/utils/constant';
 
 import { setAuth } from 'src/redux/auth';
 import LoginTemplates from 'src/template/login';
 import { setNotification } from 'src/redux/common';
+import {   FORGOT_PASSWORD } from 'src/api/authen';
 import ForgotTemplates from 'src/template/login/forgot';
-import {  SIGN_IN, FORGOT_PASSWORD } from 'src/api/authen';
 
 import DialogComponent from 'src/components/modal';
 
 const initialValues = {
-  userName: '',
-  password: '',
+  UserName: '',
+  Password: '',
 };
 const initialForgot = {
-  userName: '',
+  serName: '',
   email: '',
 };
 export default function LoginPages() {
@@ -49,8 +49,9 @@ export default function LoginPages() {
   });
 
   const onSubmit = () => {
-    postPutData({
-      url: VITE_REACT_APP_API_AUTHEN + SIGN_IN,
+    authPostFileData({
+      url: 'https://localhost:7168/authen/api/account/sign-in',
+      method: METHOD_POST,
       payload: {
         ...formik.values,
       },  
