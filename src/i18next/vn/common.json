@@ -10,6 +10,7 @@
     "administration_pages": "Quản trị hệ thống - 3HN",
     "user_pages": "Quản lý người dùng - 3HN",
     "bicycle_pages": "Quản lý xe đạp - 3HN",
+    "station_pages": "Quản lý trạm - 3HN",
     "not_found_pages": "404 - 3HN",
     "unit_pages": "Quản lý đơn vị - 3HN",
     "setting_pages": "Quản lý cấu hình - 3HN",
@@ -22,7 +23,8 @@
     "company": "Đơn vị sở hữu website",
     "setting": "Cấu hình",
     "user": "Người dùng",
-    "bicycle": "Xe đạp"
+    "bicycle": "Xe đạp",
+    "station": "Trạm"
   },
   "dialog": {
     "title": "Xác nhận",
@@ -74,6 +76,9 @@
     "namebicycle": "Tên xe",
     "catebicycle": "Loại xe",
     "codelock": "Mã khóa xe",
+    "namestation": "Tên trạm",
+    "quantity": "Số lượng xe",
+    "using" : "Đang sử dụng",
     "email": "Email",
     "password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu",

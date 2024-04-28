@@ -9,6 +9,8 @@
     "register_pages": "Register Pages - 3HN",
     "administration_pages": "Admin Pages - 3HN",
     "user_pages": "User Pages - 3HN",
+    "bicycle_pages": "Bicycle Pages - 3HN",
+    "station_pages": "Station Pages - 3HN",
     "not_found_pages": "Not found Pages - 3HN",
     "unit_pages": "Unit Pages - 3HN",
     "setting_pages": "Settings - 3HN",
@@ -21,7 +23,8 @@
     "company": "Company",
     "setting": "Setting",
     "user": "User",
-    "bicycle": "Bicycle"
+    "bicycle": "Bicycle",
+    "station": "Station"
   },
   "dialog": {
     "title": "Confirm",
@@ -69,12 +72,20 @@
     "title_table": "Table"
   },
   "field": {
+    "stt": "Sequence Num",
+    "namebicycle": "Name Bike",
+    "catebicycle": "Cate Bike",
+    "codelock": "Code Lock",
+    "namestation": "Name Station",
+    "quantity": "Quantity",
+    "using" : "Using",
     "email": "Email",
     "password": "Password",
     "confirmPassword": "Confirm password",
     "newPassword": "New password",
     "oldPassword": "Old password",
     "fullName": "FullName",
+    "isSupper": "Permision",
     "firstName": "First name",
     "lastName": "Last name",
     "userName": "Username",

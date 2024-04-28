@@ -11,7 +11,8 @@ export const PATH = {
   ALL: '*',
   ADMIN: '/admin',
   DASHBOARD: "/",
-  BICYCLE: '/bicycle'
+  BICYCLE: '/bicycle',
+  STATION: '/station'
 };
 
 export const PAGELAYOUT = {

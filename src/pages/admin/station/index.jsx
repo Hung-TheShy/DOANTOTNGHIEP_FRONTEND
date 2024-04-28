@@ -9,36 +9,28 @@ import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import { Box } from '@mui/material';
 
 import { authGetData, authPostPutData } from 'src/utils/request';
-import { parseParams, sortTableData, removeUndefinedAttribute } from 'src/utils/function';
+import { parseParams, sortTableData, buildQueryString, removeUndefinedAttribute } from 'src/utils/function';
 import {
   PAGE_SIZE,
   PAGE_INDEX,
   STATUS_200,
   METHOD_PUT,
   METHOD_POST,
-  phoneRegExp,
-  VITE_REACT_APP_API_MASTERDATA,
+  VITE_REACT_APP_API_AUTHEN,
 } from 'src/utils/constant';
 
-// import { USERALL } from 'src/api/master-data';
-import Templates from 'src/template/admin/users';
-import FormCreateUpdate from 'src/template/admin/users/form';
-import { USERALL, USERCRT, USERDEL } from 'src/api/master-data';
+import { STATION } from 'src/api/master-data';
+import Templates from 'src/template/admin/station';
+import FormCreateUpdate from 'src/template/admin/station/form';
 import { setPopup, setFetchData, setEqualForm, setNotification, setConfirmDialog } from 'src/redux/common';
 
 import Iconify from 'src/components/iconify';
 
 const initValues = {
-  fullName: '',
-  userName: '',
-  email: '',
-  phoneNumber: '',
-  address: '',
-  isSupper: '',
-  password: '',
-  confirmPassword: '',
+  key: '',
+  value: '',
 };
-export default function UserPages() {
+export default function StationPages() {
   const theme = useTheme();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -62,15 +54,8 @@ export default function UserPages() {
   const [isCreate, setIsCreate] = useState(false);
   // validate form
   const validationSchema = Yup.object({
-    fullName: Yup.string().required(t('validator.required')),
-    userName: Yup.string().required(t('validator.required')),
-    email: Yup.string().email(t('validator.email.format')).required(t('validator.required')),
-    phoneNumber: Yup.string().matches(phoneRegExp, t('validator.phone')).required(t('validator.required')),
-    password: Yup.string().min(8, t('validator.min_8')).required(t('validator.required')),
-    confirmPassword: Yup.string()
-      .required(t('validator.required'))
-      .oneOf([Yup.ref('password'), null], t('validator.match_password')),
-    address: Yup.string().max(255, t('validator.max_255')).required(t('validator.required'))
+    key: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
+    value: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
   });
   // use formik
   const formik = useFormik({
@@ -84,47 +69,30 @@ export default function UserPages() {
    // columns
   const columns = [
     {
-      accessorKey: 'fullName',
-      header: t('field.name'),
+      accessorKey: 'stt',
+      header: t('field.stt'),
       size: 400,
       enableSorting: false,
     },
     {
-      accessorKey: 'email',
-      header: t('field.email'),
-      size: 300,
-      enableSorting: false,
-    },
-    {
-      accessorKey: 'address',
-      header: t('field.address'),
+      accessorKey: 'namestation',
+      header: t('field.namestation'),
       size: 200,
       enableSorting: false,
     },
     {
-      accessorKey: 'phoneNumber',
-      header: t('field.phoneNumber'),
+      accessorKey: 'quantity',
+      header: t('field.quantity'),
       size: 150,
-      muiTableHeadCellProps: {
-        align: 'right',
-      },
-      muiTableBodyCellProps: {
-        align: 'right',
-      },
       enableSorting: false,
     },
-    // {
-    //   accessorKey: 'isActive',
-    //   header: t('field.status'),
-    //   size: 150,
-    //   muiTableHeadCellProps: {
-    //     align: 'center',
-    //   },
-    //   muiTableBodyCellProps: {
-    //     align: 'center',
-    //   },
-    //   enableSorting: false,
-    // },
+    {
+      accessorKey: 'isUsing',
+      header: t('field.using'),
+      size: 300,
+      enableSorting: false,
+    },
+   
 
     // {
     //   field: 'createdDate',
@@ -141,7 +109,7 @@ export default function UserPages() {
       size: 100,
       enableSorting: false,
       accessorFn: (row) => (
-        <Box sx={{ textAlign: 'right' }}>
+        <Box sx={{ textAlign: 'center' }}>
           <Iconify
             icon="eva:edit-fill"
             sx={{ mr: 2, height: 40, color: theme.palette.primary.main, cursor: 'pointer' }}
@@ -183,15 +151,8 @@ export default function UserPages() {
       // update
       if (Object.keys(row).length) {
         data = {
-          fullName: row.fullName,
-          userName: row.userName,
-          phoneNumber: row.phoneNumber,
-          email: row.email,
-          address: row.address,
-          password: row.password,
-          confirmPassword: row.password,
-          isSupper: row.isSupper
-
+          key: row.key,
+          value: row.value,
         };
         create = false;
         setRowId(row.id);
@@ -221,7 +182,7 @@ export default function UserPages() {
     dispatch(
       setConfirmDialog({
         show: true,
-        url: VITE_REACT_APP_API_MASTERDATA + USERDEL,
+        url: VITE_REACT_APP_API_AUTHEN + STATION,
         data: id,
       })
     );
@@ -234,7 +195,7 @@ export default function UserPages() {
   // fetch data api
   const fetchData = useCallback((conditions) => {
     authGetData({
-      url: VITE_REACT_APP_API_MASTERDATA + USERALL,
+      url: `${VITE_REACT_APP_API_AUTHEN + STATION}/list?${buildQueryString(parseParams(conditions))}`,
       onSuccess: (res) => {
         if (res && res.statusCode === STATUS_200) {
           setRows(res.data);
@@ -275,17 +236,11 @@ export default function UserPages() {
     if (isCreate) method = METHOD_POST;
     else method = METHOD_PUT;
     authPostPutData({
-      url: VITE_REACT_APP_API_MASTERDATA + USERCRT,
+      url: VITE_REACT_APP_API_AUTHEN + STATION,
       method,
       payload: {
+        ...formik.values,
         id: rowId,
-        fullName: formik.values.fullName,
-        userName: formik.values.userName,
-        email: formik.values.email,
-        phoneNumber: formik.values.phoneNumber,
-        address: formik.values.address,
-        password: formik.values.password,
-        timezone: 'Hanoi',
       },
       onSuccess: (res) => {
         if (res && res.statusCode === STATUS_200) {
@@ -302,8 +257,9 @@ export default function UserPages() {
           fetchData()
         }
       },
-    }); console.log(formik.values)
-  }, [dispatch, fetchData, formik, isCreate, rowId]);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, formik, isCreate, rowId]);
   // render form create/update
   const renderModal = useCallback(
     () => (
@@ -321,7 +277,7 @@ export default function UserPages() {
     <Templates
       rows={rows}
       columns={columns}
-      title={t('nav.user')}
+      title={t('components.settings')}
       titleModal={isCreate ? t('dialog.create_data') : t('dialog.update_data')}
       checkboxSelection={false}
       // setRowSelectionModel={setRowSelectionModel}

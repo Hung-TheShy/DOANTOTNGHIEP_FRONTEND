@@ -39,28 +39,28 @@ export default function LoginTemplates({ formik, onSubmitForm, handForgotPass })
   const renderForm = (
     <>
       <Stack spacing={2}>
-      <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="UserName">
+      <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="userName">
                 <TextField
-                  name="UserName"
-                  label={t('field.UserName')}
+                  name="userName"
+                  label={t('field.userName')}
                   size="small"
                   // eslint-disable-next-line no-unneeded-ternary
-                  error={formik.touched.UserName && formik.errors.UserName ? true : false}
-                  value={formik.values.UserName}
+                  error={formik.touched.userName && formik.errors.userName ? true : false}
+                  value={formik.values.userName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
               </ErrorTextComponent>
 
-              <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="Password">
+              <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="password">
                 <TextField
-                  name="Password"
-                  label={t('field.Password')}
+                  name="password"
+                  label={t('field.password')}
                   size="small"
-                  type={showPassword ? 'text' : 'Password'}
+                  type={showPassword ? 'text' : 'password'}
                   // eslint-disable-next-line no-unneeded-ternary
-                  error={formik.touched.Password && formik.errors.Password ? true : false}
-                  value={formik.values.Password}
+                  error={formik.touched.password && formik.errors.password ? true : false}
+                  value={formik.values.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   InputProps={{

@@ -8,6 +8,7 @@ const RegisterPages = lazy(() => import('src/pages/register'));
 const DashboardAdminPages = lazy(() => import('src/pages/admin/dashboard'));
 const UserPages = lazy(() => import('src/pages/admin/users'));
 const BicyclePages = lazy(() => import('src/pages/admin/bicycle'));
+const StationPages = lazy(() => import('src/pages/admin/station'));
 
 const Page404 = lazy(() => import('src/pages/not-found'));
 
@@ -57,6 +58,14 @@ export const routerData = [
     helmetTitle: 'helmet.bicycle_pages',
     title: 'bicycle',
     icon: 'ic_bicycle',
+  },
+  {
+    parent: PAGELAYOUT.ADMIN,
+    pathName: PATH.ADMIN + PATH.STATION,
+    component: StationPages,
+    helmetTitle: 'helmet.station_pages',
+    title: 'station',
+    icon: 'ic_station',
   },
   {
     parent: null,
