@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Stack from '@mui/material/Stack';
@@ -20,11 +20,16 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isCreate, setIsCreate] = useState(true);
+
+  useEffect(() => {
+    setIsCreate(initialValues.userId === undefined);
+  }, [initialValues.userId]);
+
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
-
 
   return (
     <Stack spacing={2} alignItems="left" justifyContent="left" marginLeft={10}>
@@ -44,6 +49,21 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
               />
             </ErrorTextComponent>
             </Box>
+            <Box mb={2}>
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="dateOfBirth">
+          <TextField
+            name="dateOfBirth"
+            label={t('field.dateOfBirth')}
+            size="small"
+            sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+            // eslint-disable-next-line no-unneeded-ternary
+            error={formik.touched.dateOfBirth && formik.errors.dateOfBirth ? true : false}
+            value={formik.values.dateOfBirth}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+        </ErrorTextComponent>
+      </Box>
           <Box mb={2}>
             <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="userName">
           <TextField
@@ -105,6 +125,7 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
         </ErrorTextComponent>
         </Box>
         <Box mb={2}>
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="isSupperAdmin">
         <FormControl sx={{minWidth: 150 }} size="small">
           <InputLabel>{t('field.isSupper')}</InputLabel>
           <Select
@@ -121,7 +142,9 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
         <MenuItem value="false"> User </MenuItem>
       </Select>
     </FormControl>
+    </ErrorTextComponent>
     </Box>
+    {isCreate &&
         <Stack direction="row" spacing={2}>
           <Stack>
             <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="password">
@@ -152,18 +175,18 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
             <ErrorTextComponent
               errors={formik.errors}
               touched={formik.touched}
-              field="confirmPassword"
+              field="passwordConfirm"
             >
               <TextField
-                name="confirmPassword"
+                name="passwordConfirm"
                 label={t('field.confirmPassword')}
                 size="small"
                 type={showConfirmPassword ? 'text' : 'password'}
                 // eslint-disable-next-line no-unneeded-ternary
                 error={
-                  !!(formik.touched.confirmPassword && formik.errors.confirmPassword)
+                  !!(formik.touched.passwordConfirm && formik.errors.passwordConfirm)
                 }
-                value={formik.values.confirmPassword}
+                value={formik.values.passwordConfirm}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 sx={{ width: 340 }}
@@ -182,7 +205,7 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
               />
             </ErrorTextComponent>
           </Stack>
-        </Stack>
+        </Stack>}
     </FormComponent>
     </Stack>
   )
