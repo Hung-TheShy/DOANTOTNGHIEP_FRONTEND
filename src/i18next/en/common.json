@@ -92,6 +92,8 @@
     "userName": "Username",
     "phoneNumber": "Phone number",
     "address": "Address",
+    "location": "Location",
+    "lock": "Lock",
     "code": "Code",
     "name": "Name",
     "fax": "Fax",

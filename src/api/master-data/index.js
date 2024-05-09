@@ -6,5 +6,14 @@ export const USERALL = "/api/user/all"
 export const USERCRT = "/api/user/create"
 export const USERDEL = "/api/user/del"
 export const USER = "/api/user"
-export const BICYCLE = "/api/bicycle"
+export const BICYCLEALL = "/api/bike/list"
+export const BICYCLECRT = "/api/bike/create"
+export const BICYCLEDEL = "/api/bike/del"
+export const BICYCLE = "/api/bike"
+
+export const StationALL = "/api/station/list"
+export const STATIONCRT = "/api/station/create"
+export const STATIONDEL = "/api/station/del"
 export const STATION = "/api/station"
+
+

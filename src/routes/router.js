@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 
 import { PATH, PAGELAYOUT } from './constant';
+// import StationPages from 'src/pages/admin/station';
 
 const IndexPages = lazy(() => import('src/pages/dashboard'));
 const LoginPages = lazy(() => import('src/pages/login'));
@@ -8,7 +9,8 @@ const RegisterPages = lazy(() => import('src/pages/register'));
 const DashboardAdminPages = lazy(() => import('src/pages/admin/dashboard'));
 const UserPages = lazy(() => import('src/pages/admin/users'));
 const BicyclePages = lazy(() => import('src/pages/admin/bicycle'));
-// const StationPages = lazy(() => import('src/pages/admin/station'));
+// eslint-disable-next-line import/no-unresolved
+const StationPages = lazy(() => import('src/pages/admin/station'));
 
 
 const Page404 = lazy(() => import('src/pages/not-found'));
@@ -60,14 +62,14 @@ export const routerData = [
     title: 'bicycle',
     icon: 'ic_bicycle',
   },
-  // {
-  //   parent: PAGELAYOUT.ADMIN,
-  //   pathName: PATH.ADMIN + PATH.STATION,
-  //   component: StationPages,
-  //   helmetTitle: 'helmet.station_pages',
-  //   title: 'station',
-  //   icon: 'ic_station',
-  // },
+  {
+    parent: PAGELAYOUT.ADMIN,
+    pathName: PATH.ADMIN + PATH.STATION,
+    component: StationPages,
+    helmetTitle: 'helmet.station_pages',
+    title: 'station',
+    icon: 'ic_station',
+  },
   {
     parent: null,
     pathName: PATH.NOTFOUND,

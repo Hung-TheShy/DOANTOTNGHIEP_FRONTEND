@@ -22,6 +22,7 @@ export const METHOD_POST = 'post';
 export const METHOD_PUT = 'put';
 export const METHOD_DELETE = 'delete';
 export const TOKEN_NAME = 'token_name';
+export const INDEX = 1;
 export const PAGE_INDEX = 1;
 export const PAGE_SIZE = 20;
 

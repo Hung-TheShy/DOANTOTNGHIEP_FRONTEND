@@ -95,6 +95,13 @@
     // columns
     const columns = [
       {
+        accessorKey: 'index',
+        header: t('STT'), 
+        size: 100,
+        enableSorting: false,
+        accessorFn: (_, rowIndex) => rowIndex + 1, // Hàm truy xuất sẽ trả về số thứ tự cho mỗi hàng
+      },
+      {
         accessorKey: 'fullName',
         header: t('field.name'),
         size: 400,

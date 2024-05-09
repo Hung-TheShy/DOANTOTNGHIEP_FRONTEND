@@ -9,27 +9,35 @@ import { useState, useEffect, useCallback, useLayoutEffect } from 'react';
 import { Box } from '@mui/material';
 
 import { authGetData, authPostPutData } from 'src/utils/request';
-import { parseParams, sortTableData, buildQueryString, removeUndefinedAttribute } from 'src/utils/function';
+import { parseParams, sortTableData, removeUndefinedAttribute } from 'src/utils/function';
 import {
+  INDEX,
   PAGE_SIZE,
   PAGE_INDEX,
   STATUS_200,
   METHOD_PUT,
   METHOD_POST,
-  VITE_REACT_APP_API_AUTHEN,
+  VITE_REACT_APP_API_MASTERDATA, 
 } from 'src/utils/constant';
 
-import { BICYCLE } from 'src/api/master-data';
 import Templates from 'src/template/admin/bicycle';
 import FormCreateUpdate from 'src/template/admin/bicycle/form';
+import {BICYCLEALL,BICYCLECRT,BICYCLEDEL  } from 'src/api/master-data';
 import { setPopup, setFetchData, setEqualForm, setNotification, setConfirmDialog } from 'src/redux/common';
 
 import Iconify from 'src/components/iconify';
 
+
 const initValues = {
-  key: '',
-  value: '',
+  bikeName:'',
+  locationName: '',
+  statusName: '',
+  
+  
+  
 };
+
+
 export default function BicyclePages() {
   const theme = useTheme();
   const location = useLocation();
@@ -43,6 +51,7 @@ export default function BicyclePages() {
   const [valueSearch, setValueSearch] = useState('');
   const [conditionsData, setConditions] = useState({
     pageIndex: PAGE_INDEX,
+    index: INDEX,
     pageSize: PAGE_SIZE,
     searchTerm: '',
     ...parseParams(location.search),
@@ -65,29 +74,35 @@ export default function BicyclePages() {
 
    // state sort data
    const [sorting, setSorting] = useState([]);
-
    // columns
   const columns = [
     {
-      accessorKey: 'stt',
-      header: t('field.stt'),
-      size: 400,
+      accessorKey: 'index',
+      header: t('STT'), 
+      size: 100,
+      enableSorting: false,
+      accessorFn: (_, rowIndex) => rowIndex + 1, // Hàm truy xuất sẽ trả về số thứ tự cho mỗi hàng
+    },
+    {
+      accessorKey: 'bikeName',
+      header: t('field.name'),
+      size: 300,
       enableSorting: false,
     },
     {
-      accessorKey: 'namebicycle',
-      header: t('field.namebicycle'),
-      size: 200,
+      accessorKey: 'locationName',
+      header: t('field.location'),
+      size: 350,
       enableSorting: false,
     },
     {
-      accessorKey: 'catebicycle',
-      header: t('field.catebicycle'),
-      size: 150,
+      accessorKey: 'lockName',
+      header: t('field.lock'),
+      size: 350,
       enableSorting: false,
     },
     {
-      accessorKey: 'status',
+      accessorKey: 'statusName',
       header: t('field.status'),
       size: 300,
       enableSorting: false,
@@ -125,6 +140,9 @@ export default function BicyclePages() {
     },
   ];
 
+  
+
+ 
   // init table
   const table = {
     columns,
@@ -151,8 +169,10 @@ export default function BicyclePages() {
       // update
       if (Object.keys(row).length) {
         data = {
-          key: row.key,
-          value: row.value,
+          bikiId: row.id,
+          bikeName: row.bikeName,
+          locationName: row.locationName,
+          statusName: row.statusName
         };
         create = false;
         setRowId(row.id);
@@ -182,8 +202,11 @@ export default function BicyclePages() {
     dispatch(
       setConfirmDialog({
         show: true,
-        url: VITE_REACT_APP_API_AUTHEN + BICYCLE,
+        url: VITE_REACT_APP_API_MASTERDATA + BICYCLEDEL,
         data: id,
+        payload: {
+        id: rowId,
+        }
       })
     );
   };
@@ -195,7 +218,7 @@ export default function BicyclePages() {
   // fetch data api
   const fetchData = useCallback((conditions) => {
     authGetData({
-      url: `${VITE_REACT_APP_API_AUTHEN + BICYCLE}/list?${buildQueryString(parseParams(conditions))}`,
+      url: VITE_REACT_APP_API_MASTERDATA + BICYCLEALL,
       onSuccess: (res) => {
         if (res && res.statusCode === STATUS_200) {
           setRows(res.data);
@@ -230,36 +253,45 @@ export default function BicyclePages() {
       searchTerm: valueSearch,
     }));
   }, [valueSearch]);
-
+// thay đổi code để phân biệt payload
   const onSubmitForm = useCallback(() => {
     let method = METHOD_POST;
-    if (isCreate) method = METHOD_POST;
-    else method = METHOD_PUT;
+    const payload = {
+        bikeName: formik.values.bikeName,
+        locationName: formik.values.locationName,
+        statusName: formik.values.statusName
+        
+    };
+
+    if (isCreate) {
+        method = METHOD_POST;
+        payload.password = formik.values.password;
+        payload.passwordConfirm = formik.values.passwordConfirm;
+    } else {
+        method = METHOD_PUT;
+        payload.userId = rowId;
+    }
     authPostPutData({
-      url: VITE_REACT_APP_API_AUTHEN + BICYCLE,
-      method,
-      payload: {
-        ...formik.values,
-        id: rowId,
-      },
-      onSuccess: (res) => {
-        if (res && res.statusCode === STATUS_200) {
-          dispatch(
-            setNotification({
-              show: true,
-              message: res.message,
-              status: 'success',
-            })
-          );
-          dispatch(setPopup(false))
-          dispatch(setEqualForm(true))
-          formik.setValues({...initValues})
-          fetchData()
-        }
-      },
+        url: VITE_REACT_APP_API_MASTERDATA + BICYCLECRT,
+        method,
+        payload,
+        onSuccess: (res) => {
+            if (res && res.statusCode === STATUS_200) {
+                dispatch(
+                    setNotification({
+                        show: true,
+                        message: res.message,
+                        status: 'success',
+                    })
+                );
+                dispatch(setPopup(false))
+                dispatch(setEqualForm(true))
+                formik.setValues({...initValues})
+                fetchData()
+            }
+        },
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, formik, isCreate, rowId]);
+}, [dispatch, fetchData, formik, isCreate, rowId]);
   // render form create/update
   const renderModal = useCallback(
     () => (
@@ -277,7 +309,7 @@ export default function BicyclePages() {
     <Templates
       rows={rows}
       columns={columns}
-      title={t('components.settings')}
+      title={t('nav.bicycle')}
       titleModal={isCreate ? t('dialog.create_data') : t('dialog.update_data')}
       checkboxSelection={false}
       // setRowSelectionModel={setRowSelectionModel}

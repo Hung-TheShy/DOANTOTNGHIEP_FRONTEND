@@ -92,6 +92,8 @@
     "userName": "Tên đăng nhập",
     "phoneNumber": "Số điện thoại",
     "address": "Địa chỉ",
+    "location": " Vị trí",
+    "lock": "Khóa xe",
     "code": "Mã",
     "name": "Tên",
     "fax": "Fax",
