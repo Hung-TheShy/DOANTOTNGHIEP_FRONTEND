@@ -78,6 +78,8 @@
     "codelock": "Mã khóa xe",
     "namestation": "Tên trạm",
     "quantity": "Số lượng xe",
+    "locationName": "Tên vị trí" ,
+    "numofseats": "Số chỗ trống",
     "using" : "Đang sử dụng",
     "email": "Email",
     "password": "Mật khẩu",
