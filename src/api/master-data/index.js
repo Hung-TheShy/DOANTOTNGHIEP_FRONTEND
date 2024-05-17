@@ -17,4 +17,7 @@ export const STATIONCRT = "/api/station/create"
 export const STATIONDEL = "/api/station/del"
 export const STATION = "/api/station"
 
-
+export const COMPLAINALL = "/api/complain/list"
+export const COMPLAINDET = "/api/complain/detail"
+export const COMPLAINDEL = "/api/complain/del"
+export const COMPLAIN = "/api/station"

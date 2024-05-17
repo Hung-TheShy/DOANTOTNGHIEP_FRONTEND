@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-import { TextField } from "@mui/material";
+import { Box, Stack, TextField} from "@mui/material";
 // import Autocomplete from '@mui/material/Autocomplete';
 
 import FormComponent from "src/components/form";
@@ -12,8 +12,9 @@ export default function FormBicycle({formik, onSubmitForm, textBtn, initialValue
   // const categorybicycle = [
   //   {label: 'The Shawshank Redemption'}]
   return (
+    <Stack spacing={2} alignItems="center" justifyContent="center" >
     <FormComponent formik={formik} textBtn={textBtn} handleSubmitForm={onSubmitForm} initialValues={initialValues}>
-     
+     <Box mb={2}>
       <ErrorTextComponent
         errors={formik.errors}
         touched={formik.touched}
@@ -22,15 +23,17 @@ export default function FormBicycle({formik, onSubmitForm, textBtn, initialValue
       >
         <TextField
           name="bikeName"
-          label={t('field.name')}
+          label={t('field.bikeName')}
           size="small"
+          sx={{width: 700, maxWidth: 700, marginBottom: 10}}
           // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.namebicycle ? true : false}
-          value={formik.values.firstName}
+          error={Object.keys(formik.errors).length && formik.errors.bikeName ? true : false}
+          value={formik.values.bikeName}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         </ErrorTextComponent>
+        </Box>
       {/* <Autocomplete
       disablePortal
       id="combo-box-demo"
@@ -38,58 +41,88 @@ export default function FormBicycle({formik, onSubmitForm, textBtn, initialValue
       sx={{ width: 1400 }}
       renderInput={(params) => <TextField {...params} label={t('field.catebicycle')} />}
     /> */}
+    <Box mb={2}>
       <ErrorTextComponent
         errors={formik.errors}
         touched={formik.touched}
-        field="locationName"
+        field="locationId"
         
       >
         <TextField
-          name="locationName"
+          name="locationId"
           label={t('field.location')}
           size="small"
+          sx={{width: 700, maxWidth: 700, marginBottom: 10}}
           // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.namebicycle ? true : false}
-          value={formik.values.firstName}
+          error={Object.keys(formik.errors).length && formik.errors.locationId ? true : false}
+          value={formik.values.locationId}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         </ErrorTextComponent>
+        </Box>
+        <Box mb={2}>
         <ErrorTextComponent
         errors={formik.errors}
         touched={formik.touched}
-        field="lockName"
+        field="stationId"
         
       >
         <TextField
-          name="lockName"
+          name="stationId"
+          label={t('field.stationName')}
+          size="small"
+          sx={{width: 700, maxWidth: 700, marginBottom: 10}}
+          // eslint-disable-next-line no-unneeded-ternary
+          error={Object.keys(formik.errors).length && formik.errors.stationId ? true : false}
+          value={formik.values.stationId}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        </ErrorTextComponent>
+        </Box>
+        <Box mb={2}>
+        <ErrorTextComponent
+        errors={formik.errors}
+        touched={formik.touched}
+        field="lockId"
+        
+      >
+        <TextField
+          name="lockId"
           label={t('field.lock')}
           size="small"
+          sx={{width: 700, maxWidth: 700, marginBottom: 10}}
           // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.namebicycle ? true : false}
-          value={formik.values.firstName}
+          error={Object.keys(formik.errors).length && formik.errors.lockId ? true : false}
+          value={formik.values.lockId}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         </ErrorTextComponent>
+        </Box>
+        <Box mb={2}>
         <ErrorTextComponent
         errors={formik.errors}
         touched={formik.touched}
-        field="statusName"
+        field="statusId"
         
       >
         <TextField
-          name="statusName"
-          label={t('field.status')}
+          name="statusId"
+          label={t('field.statusName')}
           size="small"
+          sx={{width: 700, maxWidth: 700, marginBottom: 10}}
           // eslint-disable-next-line no-unneeded-ternary
-          error={Object.keys(formik.errors).length && formik.errors.namebicycle ? true : false}
-          value={formik.values.firstName}
+          error={Object.keys(formik.errors).length && formik.errors.statusId ? true : false}
+          value={formik.values.statusId}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
         </ErrorTextComponent>
+        </Box>
     </FormComponent>
+    </Stack>
   )
 }
 

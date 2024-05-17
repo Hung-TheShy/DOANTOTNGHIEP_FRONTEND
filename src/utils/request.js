@@ -87,7 +87,9 @@ export async function authGet(endpoint) {
   const data = await Axios({
     headers: {
       Authorization: `Bearer ${token}`,
+      "ngrok-skip-browesr-warning": "true"  
     },
+    ContentType: 'text/plain',
     method: METHOD_GET,
     url: endpoint,
   });

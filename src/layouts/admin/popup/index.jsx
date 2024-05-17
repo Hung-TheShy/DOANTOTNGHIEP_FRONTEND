@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CloseIcon from '@mui/icons-material/Close';
+import { lightGreen } from '@mui/material/colors';
 import { Box, Stack, Dialog, Tooltip, useTheme, Typography } from '@mui/material';
 
 import { setPopup, setConfirmDialog } from 'src/redux/common';
@@ -39,7 +40,7 @@ export default function LayoutPopup(props) {
   // render content popup
   const renderPopup = useCallback(
     () => (
-      <Box marginLeft={20} marginRight={20}>
+      <Box marginLeft={20} marginRight={20} border={1} borderRadius={1} borderColor={lightGreen[800]}>
         <Stack
           flexDirection="row"
           alignItems="center"
@@ -86,6 +87,7 @@ export default function LayoutPopup(props) {
           </Scrollbar>
         </Box>
       </Box>
+      
     ),
     [children, handleClose, open, t, theme.palette.grey, theme.palette.success.main, title]
   );

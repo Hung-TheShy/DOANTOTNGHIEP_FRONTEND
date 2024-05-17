@@ -29,13 +29,15 @@ import Iconify from 'src/components/iconify';
 
 
 const initValues = {
-  bikeName:'',
+  stationName:'',
+  quantityAvaiable: '',
+  numOfSeats: '',
+  locationId: '',
   locationName: '',
-  statusName: '',
-  
-  
-  
+  statusId: '',
+  statusName: ''
 };
+
 
 
 export default function StationPages() {
@@ -56,6 +58,9 @@ export default function StationPages() {
     searchTerm: '',
     ...parseParams(location.search),
   });
+
+  
+
   const [rowId, setRowId] = useState(null);
   // init form
   const [initialValues, setInitialValues] = useState(initValues);
@@ -63,8 +68,17 @@ export default function StationPages() {
   const [isCreate, setIsCreate] = useState(false);
   // validate form
   const validationSchema = Yup.object({
-    key: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
-    value: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
+    stationName: Yup.string().required(t('validator.required')),
+    quantityAvaiable: Yup.string()
+    .required(t('validator.required'))
+    .matches(/^\d+$/, t('validator.numeric')), // Chỉ chấp nhận các ký tự số
+    numOfSeats: Yup.string()
+    .required(t('validator.required'))
+    .matches(/^\d+$/, t('validator.numeric')), // Chỉ chấp nhận các ký tự số
+    locationId: Yup.string().required(t('validator.required')),
+    locationName: Yup.string().required(t('validator.required')),
+    statusId: Yup.string().required(t('validator.required')),
+    statusName: Yup.string().required(t('validator.required')),
   });
   // use formik
   const formik = useFormik({
@@ -79,38 +93,38 @@ export default function StationPages() {
     {
       accessorKey: 'index',
       header: t('STT'), 
-      size: 100,
+      size: 50,
       enableSorting: false,
       accessorFn: (_, rowIndex) => rowIndex + 1, // Hàm truy xuất sẽ trả về số thứ tự cho mỗi hàng
     },
     {
       accessorKey: 'stationName',
-      header: t('field.namestation'),
-      size: 300,
+      header: t('field.stationName'),
+      size: 250,
       enableSorting: false,
     },
     {
       accessorKey: 'quantityAvaiable',
-      header: t('field.quantity'),
-      size: 350,
+      header: t('field.quantityAvaiable'),
+      size: 150,
       enableSorting: false,
     },
     {
       accessorKey: 'numOfSeats',
-      header: t('field.numofseats'),
-      size: 350,
+      header: t('field.numOfSeats'),
+      size: 150,
       enableSorting: false,
     },
     {
       accessorKey: 'locationName',
       header: t('field.locationName'),
-      size: 300,
+      size: 240,
       enableSorting: false,
     },
     {
       accessorKey: 'statusName',
-      header: t('field.status'),
-      size: 300,
+      header: t('field.statusName'),
+      size: 200,
       enableSorting: false,
     },
    
@@ -175,9 +189,13 @@ export default function StationPages() {
       // update
       if (Object.keys(row).length) {
         data = {
-          bikiId: row.id,
-          bikeName: row.bikeName,
+          stationId: row.id,
+          stationName: row.stationName,
+          quantityAvaiable: row.quantityAvaiable,
+          numOfSeats: row.numOfSeats,
+          locationId: row.locationId,
           locationName: row.locationName,
+          statusId: row.statusId,
           statusName: row.statusName
         };
         create = false;
@@ -260,43 +278,39 @@ export default function StationPages() {
     }));
   }, [valueSearch]);
 // thay đổi code để phân biệt payload
-  const onSubmitForm = useCallback(() => {
-    let method = METHOD_POST;
-    const payload = {
-        bikeName: formik.values.bikeName,
-        locationName: formik.values.locationName,
-        statusName: formik.values.statusName
-        
-    };
-
-    if (isCreate) {
-        method = METHOD_POST;
-        payload.password = formik.values.password;
-        payload.passwordConfirm = formik.values.passwordConfirm;
-    } else {
-        method = METHOD_PUT;
-        payload.userId = rowId;
-    }
-    authPostPutData({
-        url: VITE_REACT_APP_API_MASTERDATA + STATIONCRT,
-        method,
-        payload,
-        onSuccess: (res) => {
-            if (res && res.statusCode === STATUS_200) {
-                dispatch(
-                    setNotification({
-                        show: true,
-                        message: res.message,
-                        status: 'success',
-                    })
-                );
-                dispatch(setPopup(false))
-                dispatch(setEqualForm(true))
-                formik.setValues({...initValues})
-                fetchData()
-            }
-        },
-    });
+const onSubmitForm = useCallback(() => {
+  let method = METHOD_POST;
+  if (isCreate) method = METHOD_POST;
+  else method = METHOD_PUT;
+  authPostPutData({
+    url: VITE_REACT_APP_API_MASTERDATA + STATIONCRT,
+    method,
+    payload: {
+      stationId: rowId,
+      stationName: formik.values.stationName,
+      quantityAvaiable: formik.values.quantityAvaiable,
+      numOfSeats: formik.values.numOfSeats,
+      locationId: formik.values.locationId,
+      locationName: formik.values.locationName,
+      statusId: formik.values.statusId,
+      statusName: formik.values.statusName,
+    },
+    onSuccess: (res) => {
+      if (res && res.statusCode === STATUS_200) {
+        dispatch(
+          setNotification({
+            show: true,
+            message: res.message,
+            status: 'success',
+          })
+        );
+        dispatch(setPopup(false))
+        dispatch(setEqualForm(true))
+        formik.setValues({...initValues})
+        fetchData()
+      }
+    },
+  }); console.log(formik.values)
 }, [dispatch, fetchData, formik, isCreate, rowId]);
   // render form create/update
   const renderModal = useCallback(
@@ -308,7 +322,7 @@ export default function StationPages() {
         initialValues={initialValues}
       />
     ),
-    [formik, initialValues, isCreate, onSubmitForm, t]
+    [formik, initialValues, isCreate, onSubmitForm, t,]
   );
 
   return (

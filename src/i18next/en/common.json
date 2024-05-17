@@ -15,7 +15,8 @@
     "unit_pages": "Unit Pages - 3HN",
     "setting_pages": "Settings - 3HN",
     "company_pages": "Companies - 3HN",
-    "attributes": "Attributes - 3HN"
+    "attributes": "Attributes - 3HN",
+    "complain_pages": "Complain - 3HN"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -24,7 +25,8 @@
     "setting": "Setting",
     "user": "User",
     "bicycle": "Bicycle",
-    "station": "Station"
+    "station": "Station",
+    "complain": "Complain"
   },
   "dialog": {
     "title": "Confirm",
@@ -76,7 +78,7 @@
     "namebicycle": "Name Bike",
     "catebicycle": "Cate Bike",
     "codelock": "Code Lock",
-    "namestation": "Name Station",
+    "stationName": "Name Station",
     "quantity": "Quantity",
     "using" : "Using",
     "email": "Email",
@@ -104,13 +106,18 @@
     "mobile": "Mobile",
     "slogan": "Slogan",
     "pathLogo": "Logo",
-    "status": "Status"
+    "statusName": "Status",
+    "locationId": "ID Location",
+    "statusId": "ID Status",
+    "lockId": "ID Lock",
+    "stationId": "ID Station"
   },
   "validator": {
     "required": "is required",
     "min_8": "min 8 character",
     "max_255": "max 255 character",
     "match_password": "Password must match",
+    "numeric": "Only accept number",
     "email": {
       "format": "incorrect email format"
     },

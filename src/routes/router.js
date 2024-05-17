@@ -9,8 +9,8 @@ const RegisterPages = lazy(() => import('src/pages/register'));
 const DashboardAdminPages = lazy(() => import('src/pages/admin/dashboard'));
 const UserPages = lazy(() => import('src/pages/admin/users'));
 const BicyclePages = lazy(() => import('src/pages/admin/bicycle'));
-// eslint-disable-next-line import/no-unresolved
 const StationPages = lazy(() => import('src/pages/admin/station'));
+const ComplainPages =lazy(() => import('src/pages/admin/complain'));
 
 
 const Page404 = lazy(() => import('src/pages/not-found'));
@@ -69,6 +69,14 @@ export const routerData = [
     helmetTitle: 'helmet.station_pages',
     title: 'station',
     icon: 'ic_station',
+  },
+  {
+    parent: PAGELAYOUT.ADMIN,
+    pathName: PATH.ADMIN + PATH.COMPLAIN,
+    component: ComplainPages,
+    helmetTitle: 'helmet.complain_pages',
+    title: 'complain',
+    icon: 'ic_complain',
   },
   {
     parent: null,

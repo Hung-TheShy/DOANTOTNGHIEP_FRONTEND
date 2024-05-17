@@ -12,7 +12,8 @@ export const PATH = {
   ADMIN: '/admin',
   DASHBOARD: "/",
   BICYCLE: '/bicycle',
-  STATION: '/station'
+  STATION: '/station',
+  COMPLAIN: '/complain'
 };
 
 export const PAGELAYOUT = {

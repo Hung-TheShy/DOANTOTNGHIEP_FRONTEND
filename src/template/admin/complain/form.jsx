@@ -1,20 +1,35 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Stack from '@mui/material/Stack';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import { Box, TextField } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import Iconify from 'src/components/iconify';
 import FormComponent from "src/components/form";
 import ErrorTextComponent from "src/components/error-text";
 
-export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}) {
+export default function FormComplains({formik, onSubmitForm, textBtn, initialValues}) {
+  const [selectedValue, setSelectedValue] = useState('');
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isCreate, setIsCreate] = useState(true);
+
+  useEffect(() => {
+    setIsCreate(initialValues.userId === undefined);
+  }, [initialValues.userId]);
+
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   return (
     <Stack spacing={2} alignItems="left" justifyContent="left" marginLeft={10}>
@@ -109,6 +124,27 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
           />
         </ErrorTextComponent>
         </Box>
+        <Box mb={2}>
+        <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="isSupperAdmin">
+        <FormControl sx={{minWidth: 150 }} size="small">
+          <InputLabel>{t('field.isSupper')}</InputLabel>
+          <Select
+        name="isSupperAdmin"
+        value={selectedValue}
+        label={t('field.isSupper')}
+        onChange={handleChange}
+        onBlur={formik.handleBlur}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        <MenuItem value="true"> Admin </MenuItem>
+        <MenuItem value="false"> User </MenuItem>
+      </Select>
+    </FormControl>
+    </ErrorTextComponent>
+    </Box>
+    {isCreate &&
         <Stack direction="row" spacing={2}>
           <Stack>
             <ErrorTextComponent errors={formik.errors} touched={formik.touched} field="password">
@@ -143,7 +179,7 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
             >
               <TextField
                 name="passwordConfirm"
-                label={t('field.passwordConfirm')}
+                label={t('field.confirmPassword')}
                 size="small"
                 type={showConfirmPassword ? 'text' : 'password'}
                 // eslint-disable-next-line no-unneeded-ternary
@@ -169,14 +205,14 @@ export default function FormUsers({formik, onSubmitForm, textBtn, initialValues}
               />
             </ErrorTextComponent>
           </Stack>
-        </Stack>
+        </Stack>}
     </FormComponent>
     </Stack>
   )
 }
 
 
-FormUsers.propTypes = {
+FormComplains.propTypes = {
   formik: PropTypes.object,
   onSubmitForm: PropTypes.func,
   textBtn: PropTypes.string,

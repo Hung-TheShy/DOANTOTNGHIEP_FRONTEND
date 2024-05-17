@@ -152,7 +152,7 @@ export default function AccountPopover() {
             background: (theme) => alpha(theme.palette.grey[500], 0.08),
             ...(openPopover && {
               background: (theme) =>
-                `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
+                `linear-gradient(135deg, ${theme.palette.success.light} 0%, ${theme.palette.success.main} 100%)`,
             }),
           }}
         >
@@ -189,7 +189,7 @@ export default function AccountPopover() {
           <Typography variant="subtitle2" noWrap>
             {user.fullName}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.primary' }} noWrap>
+          <Typography variant="body2" sx={{ color: 'text.success' }} noWrap>
             {user.email}
           </Typography>
         </Box>
@@ -202,8 +202,8 @@ export default function AccountPopover() {
             onClick={() => handleClick(option.key)}
             sx={{
               '&:hover': (theme) => ({
-                color: theme.palette.primary.main,
-                backgroundColor: alpha(theme.palette.primary.main, 0.08),
+                color: theme.palette.success.main,
+                backgroundColor: alpha(theme.palette.success.main, 0.08),
               }),
             }}
           >
@@ -232,6 +232,7 @@ export default function AccountPopover() {
 
       {openModal && (
         <DialogComponent
+        colorBtn='success'
           open={openModal}
           setOpen={setOpenModal}
           title="Thay đổi thông tin"

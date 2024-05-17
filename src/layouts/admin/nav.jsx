@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import { alpha } from '@mui/material/styles';
+import { lightGreen } from '@mui/material/colors';
 import ListItemButton from '@mui/material/ListItemButton';
 
 import { usePathname } from 'src/routes/hooks';
@@ -71,6 +72,8 @@ export default function Nav({ openNav, onCloseNav }) {
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV.WIDTH },
+        border: 1,
+        borderColor: lightGreen[800]
       }}
     >
       {upLg ? (

@@ -14,7 +14,7 @@ import {
   OutlinedInput,
   InputAdornment,
   AccordionDetails,
-  AccordionSummary,
+  AccordionSummary
 } from '@mui/material';
 
 import { setFetchData } from 'src/redux/common';
@@ -44,25 +44,29 @@ export default function TableLayoutAdmin({
   renderModal,
   setValueSearch,
   valueSearch,
+  searchResults,
   handleOpenModal,
+  handleCloseSearchResults,
+  showSearchResults,
   table,
+  isSearch
 }) {
+
   const { t } = useTranslation();
   // show popup in store
   const showPopup = useSelector((state) => state.common.isPopup);
   const dispatch = useDispatch();
   // set value change
-  const onChangeValue = useCallback(
-    (e) => {
-      setValueSearch(e.target.value);
-    },
-    [setValueSearch]
-  );
+  const onChangeValue = (event) => {
+    setValueSearch(event.target.value);
+  };
+
   // clear value
   const handleClear = useCallback(() => {
     setValueSearch('');
+    searchResults([]);
     dispatch(setFetchData(true));
-  }, [dispatch, setValueSearch]);
+  }, [dispatch, setValueSearch, searchResults]);
   return (
     <>
       {showPopup ? (
@@ -85,54 +89,51 @@ export default function TableLayoutAdmin({
           </Stack>
 
           <FilterDataTable>
-            {renderFilter || (
-              <Box sx={{ textAlign: 'right' }}>
-                <OutlinedInput
-                  value={valueSearch}
-                  onChange={onChangeValue}
-                  placeholder={t('placeholder.search')}
-                  sx={{ marginRight: 2 }}
-                  size="small"
-                  color="success"
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <Iconify
-                        icon="eva:search-fill"
-                        sx={{ color: 'text.disabled', width: 20, height: 20 }}
-                      />
-                    </InputAdornment>
-                  }
-                />
-                <LoadingButton
-                  //   fullWidth
-                  size="small"
-                  variant="text"
-                  color="success"
-                  onClick={handleClear}
-                  sx={{ marginRight: 1 }}
-                >
-                  {t('button.clear')}
-                </LoadingButton>
-                <LoadingButton
-                  //   fullWidth
-                  size="small"
-                  type="submit"
-                  variant="contained"
-                  color="success"
-                  onClick={handleSearch}
-                  disabled={valueSearch === ''}
-                >
-                  {t('button.search')}
-                </LoadingButton>
-              </Box>
-            )}
+            <Box sx={{ textAlign: 'right' }}>
+              <OutlinedInput
+                value={valueSearch}
+                onChange={onChangeValue}
+                placeholder={t('placeholder.search')}
+                sx={{ marginRight: 2 }}
+                size="small"
+                color="success"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <Iconify
+                      icon="eva:search-fill"
+                      sx={{ color: 'text.disabled', width: 20, height: 20 }}
+                    />
+                  </InputAdornment>
+                }
+              />
+              <LoadingButton
+                size="small"
+                variant="text"
+                color="success"
+                onClick={handleClear}
+                sx={{ marginRight: 1 }}
+              >
+                {t('button.clear')}
+              </LoadingButton>
+              <LoadingButton
+                size="small"
+                type="submit"
+                variant="contained"
+                color="success"
+                onClick={handleSearch}
+                disabled={valueSearch === ''}
+              >
+                {t('button.search')}
+              </LoadingButton>
+            </Box>
           </FilterDataTable>
+
           <Accordion defaultExpanded sx={{ marginTop: '0 !important' }}>
             <AccordionSummary
               expandIcon={<ArrowDropDownIcon />}
               aria-controls="panel-table"
               id="panel-table"
-              style={{backgroundColor: "#058c42"}}
+              style={{ backgroundColor: "#058c42" }}
             >
               <Typography variant="subtitle2">
                 {accordionTitle || t('accordion.title_table')}
@@ -148,12 +149,30 @@ export default function TableLayoutAdmin({
                 checkboxSelection={checkboxSelection}
                 setConditions={setConditions}
                 conditions={conditions}
-                // fixedRight={fixedRight}
-                // fixedLeft={fixedLeft}
                 table={table}
               />
             </AccordionDetails>
           </Accordion>
+
+          {/* <Modal
+            open={showSearchResults}
+            onClose={handleCloseSearchResults}
+          >
+            <Box>
+              <Typography variant="h6">Kết quả tìm kiếm</Typography>
+              <TableComponent
+                rows={localSearchResults}
+                total={localSearchResults.length}
+                columns={columns}
+                minHeight={minHeight}
+                setRowSelectionModel={setRowSelectionModel}
+                checkboxSelection={checkboxSelection}
+                setConditions={setConditions}
+                conditions={conditions}
+                table={table}
+              />
+            </Box>
+          </Modal> */}
         </Box>
       )}
       <AlertDialog />
@@ -172,15 +191,17 @@ TableLayoutAdmin.propTypes = {
   setRowSelectionModel: PropTypes.func,
   checkboxSelection: PropTypes.bool,
   renderFilter: PropTypes.node,
+  showSearchResults: PropTypes.bool,
+  handleCloseSearchResults: PropTypes.func,
   handleOpenModal: PropTypes.func,
   setConditions: PropTypes.func,
   conditions: PropTypes.object,
   handleSearch: PropTypes.func,
   renderModal: PropTypes.any,
   setValueSearch: PropTypes.func,
+  searchResults: PropTypes.array,
   valueSearch: PropTypes.string,
   total: PropTypes.number,
-  // fixedRight: PropTypes.array,
-  // fixedLeft: PropTypes.array,
   table: PropTypes.object,
+  isSearch: PropTypes.bool
 };

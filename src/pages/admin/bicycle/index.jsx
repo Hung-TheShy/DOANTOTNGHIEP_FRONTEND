@@ -30,11 +30,10 @@ import Iconify from 'src/components/iconify';
 
 const initValues = {
   bikeName:'',
-  locationName: '',
-  statusName: '',
-  
-  
-  
+  locationId: '',
+  stationId: '',
+  statusId: '',
+  lockId: ''
 };
 
 
@@ -63,8 +62,11 @@ export default function BicyclePages() {
   const [isCreate, setIsCreate] = useState(false);
   // validate form
   const validationSchema = Yup.object({
-    key: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
-    value: Yup.string().max(255, t('validator.max_255')).required(t('validator.required')),
+    bikeName: Yup.string().required(t('validator.required')),
+    locationId: Yup.string().required(t('validator.required')),
+    stationId: Yup.string().required(t('validator.required')),
+    lockId: Yup.string().required(t('validator.required')),
+    statusId: Yup.string().required(t('validator.required'))
   });
   // use formik
   const formik = useFormik({
@@ -85,26 +87,32 @@ export default function BicyclePages() {
     },
     {
       accessorKey: 'bikeName',
-      header: t('field.name'),
-      size: 300,
+      header: t('field.bikeName'),
+      size: 200,
       enableSorting: false,
     },
     {
       accessorKey: 'locationName',
       header: t('field.location'),
-      size: 350,
+      size: 200,
       enableSorting: false,
     },
     {
-      accessorKey: 'lockName',
+      accessorKey: 'stationName',
+      header: t('field.stationName'),
+      size: 300,
+      enableSorting: false,
+    },
+    {
+      accessorKey: 'lockId',
       header: t('field.lock'),
-      size: 350,
+      size: 200,
       enableSorting: false,
     },
     {
       accessorKey: 'statusName',
-      header: t('field.status'),
-      size: 300,
+      header: t('field.statusName'),
+      size: 200,
       enableSorting: false,
     },
    
@@ -169,10 +177,12 @@ export default function BicyclePages() {
       // update
       if (Object.keys(row).length) {
         data = {
-          bikiId: row.id,
+          bikeId: row.id,
           bikeName: row.bikeName,
-          locationName: row.locationName,
-          statusName: row.statusName
+          locationId: row.locationId,
+          stationId: row.stationId,
+          statusId: row.statusId,
+          lockId: row.lockId
         };
         create = false;
         setRowId(row.id);
@@ -254,44 +264,38 @@ export default function BicyclePages() {
     }));
   }, [valueSearch]);
 // thay đổi code để phân biệt payload
-  const onSubmitForm = useCallback(() => {
-    let method = METHOD_POST;
-    const payload = {
-        bikeName: formik.values.bikeName,
-        locationName: formik.values.locationName,
-        statusName: formik.values.statusName
-        
-    };
-
-    if (isCreate) {
-        method = METHOD_POST;
-        payload.password = formik.values.password;
-        payload.passwordConfirm = formik.values.passwordConfirm;
-    } else {
-        method = METHOD_PUT;
-        payload.userId = rowId;
-    }
-    authPostPutData({
+const onSubmitForm = useCallback(() => {
+      let method = METHOD_POST;
+      if (isCreate) method = METHOD_POST;
+      else method = METHOD_PUT;
+      authPostPutData({
         url: VITE_REACT_APP_API_MASTERDATA + BICYCLECRT,
         method,
-        payload,
-        onSuccess: (res) => {
-            if (res && res.statusCode === STATUS_200) {
-                dispatch(
-                    setNotification({
-                        show: true,
-                        message: res.message,
-                        status: 'success',
-                    })
-                );
-                dispatch(setPopup(false))
-                dispatch(setEqualForm(true))
-                formik.setValues({...initValues})
-                fetchData()
-            }
+        payload: {
+          bikeId: rowId,
+          bikeName: formik.values.bikeName,
+          locationId: formik.values.locationId,
+          stationId: formik.values.stationId,
+          statusId: formik.values.statusId,
+          lockId: formik.values.lockId
         },
-    });
-}, [dispatch, fetchData, formik, isCreate, rowId]);
+        onSuccess: (res) => {
+          if (res && res.statusCode === STATUS_200) {
+            dispatch(
+              setNotification({
+                show: true,
+                message: res.message,
+                status: 'success',
+              })
+            );
+            dispatch(setPopup(false))
+            dispatch(setEqualForm(true))
+            formik.setValues({...initValues})
+            fetchData()
+          }
+        },
+      }); console.log(formik.values)
+    }, [dispatch, fetchData, formik, isCreate, rowId]);
   // render form create/update
   const renderModal = useCallback(
     () => (

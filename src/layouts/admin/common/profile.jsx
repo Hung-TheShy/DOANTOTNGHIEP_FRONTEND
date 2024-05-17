@@ -60,7 +60,7 @@ export default function ProfileAccount({ formik }) {
         </Stack>
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoItem label="12321">
+            <DemoItem label="">
               <DatePicker error />
             </DemoItem>
         </LocalizationProvider>

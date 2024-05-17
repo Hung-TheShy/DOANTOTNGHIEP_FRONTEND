@@ -15,7 +15,8 @@
     "unit_pages": "Quản lý đơn vị - 3HN",
     "setting_pages": "Quản lý cấu hình - 3HN",
     "company_pages": "Quản lý đơn vị sở hữu website - 3HN",
-    "attributes": "Quản lý thuộc tính - 3HN"
+    "attributes": "Quản lý thuộc tính - 3HN",
+    "complain_pages": "Quản lí khiếu nại - 3HN"
   },
   "nav": {
     "dashboard": "Trang chủ",
@@ -24,7 +25,8 @@
     "setting": "Cấu hình",
     "user": "Người dùng",
     "bicycle": "Xe đạp",
-    "station": "Trạm"
+    "station": "Trạm",
+    "complain": "Khiếu nại"
   },
   "dialog": {
     "title": "Xác nhận",
@@ -73,17 +75,17 @@
   },
   "field": {
     "stt": "Số thứ tự",
-    "namebicycle": "Tên xe",
+    "bikeName": "Tên xe",
     "catebicycle": "Loại xe",
     "codelock": "Mã khóa xe",
-    "namestation": "Tên trạm",
-    "quantity": "Số lượng xe",
+    "stationName": "Tên trạm",
+    "quantityAvaiable": "Số lượng xe",
     "locationName": "Tên vị trí" ,
-    "numofseats": "Số chỗ trống",
+    "numOfSeats": "Số chỗ trống",
     "using" : "Đang sử dụng",
     "email": "Email",
     "password": "Mật khẩu",
-    "confirmPassword": "Xác nhận mật khẩu",
+    "passwordConfirm": "Xác nhận mật khẩu",
     "newPassword": "Mật khẩu mới",
     "oldPassword": "Mật khẩu cũ",
     "fullName": "Họ và Tên",
@@ -106,13 +108,19 @@
     "mobile": "Di động",
     "slogan": "Khẩu hiệu",
     "pathLogo": "Ảnh",
-    "status": "Trạng thái"
+    "statusName": "Trạng thái",
+    "content": "Nội dung",
+    "locationId": "ID vị trí",
+    "statusId": "ID trạng thái",
+    "lockId": "ID khóa xe",
+    "stationId": "ID Trạm"
   },
   "validator": {
     "required": "không được bỏ trống",
     "min_8": "ít nhất 8 kí tự",
     "max_255": "tối đa 255 kí tự",
     "match_password": "không trùng với mật khẩu",
+    "numeric": "chỉ chấp nhận các kí tự Số",
     "email": {
       "format": "không đúng định dạng email"
     },
